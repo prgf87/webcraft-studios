@@ -6,4 +6,55 @@
   padding: 0;
   margin: 0;
   box-sizing: content-box;
+  scroll-behavior: smooth;
 }
+
+body {
+  font-size: 1.2rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.primary-button {
+  @apply border border-[#7D1CBF] rounded-3xl px-8 py-3 font-bold uppercase text-sm bg-[#7D1CBF]/90 text-white;
+}
+
+input,
+textarea {
+  min-width: 300px;
+  border: 1px solid black;
+}
+
+/*
+Generic Gradient
+primary: #7D1CBF
+secondary: #DD0099
+thirdary: #FF3870
+quartery: #FF814F
+fifth: #FFC049
+sixth: #F9F871
+*/
+
+/*
+Matching Gradient
+primary: #7D1CBF
+secondary: #005CF0
+thirdary: #007FFF
+quartery: #0098F5
+fifth: #00ABD2
+sixth: #00BAA3
+*/
+
+/* 
+Neighbour Pallette
+primary: #7D1CBF
+secondary: #3B627D
+thirdary: #5597C3
+quartery: #B7C9D8
+*/
