@@ -40,7 +40,7 @@ export default function About() {
               </p>
               <div className="pt-4">
                 <Link href={'/#contact'}>
-                  <button className="primary-button">Schedule a Call</button>
+                  <button className="btn-1">Schedule a Call</button>
                 </Link>
               </div>
             </div>

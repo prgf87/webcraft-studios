@@ -21,7 +21,7 @@ h6 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.primary-button {
+.btn-1 {
   @apply border border-[#7D1CBF] rounded-3xl px-8 py-3 font-bold uppercase text-sm bg-[#7D1CBF]/90 text-white shadow-md hover:bg-white hover:text-[#7D1CBF] transition-colors duration-300 ease-out;
 }
 
