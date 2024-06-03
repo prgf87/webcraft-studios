@@ -1,14 +1,18 @@
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import ContactForm from '@/components/ContactForm';
-
-const inter = Inter({ subsets: ['latin'] });
+import ContactForm from '@/components/contactForm';
+import Layout from '@/components/layout';
+import About from '@/components/about';
+import Hero from '@/components/hero';
+import Services from '@/components/services';
+import Portfolio from '@/components/portfolio';
 
 export default function Home() {
   return (
-    <main className={inter.className}>
-      <h1>Hello World! </h1>
+    <Layout>
+      <Hero />
+      <Services />
+      <Portfolio />
+      <About />
       <ContactForm />
-    </main>
+    </Layout>
   );
 }
