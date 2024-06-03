@@ -29,7 +29,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mx-auto p-4">
+        <div className="mx-auto px-16 py-4">
           <Image
             src={pic}
             alt="picture"

@@ -22,13 +22,18 @@ h6 {
 }
 
 .primary-button {
-  @apply border border-[#7D1CBF] rounded-3xl px-8 py-3 font-bold uppercase text-sm bg-[#7D1CBF]/90 text-white;
+  @apply border border-[#7D1CBF] rounded-3xl px-8 py-3 font-bold uppercase text-sm bg-[#7D1CBF]/90 text-white shadow-md hover:bg-white hover:text-[#7D1CBF] transition-colors duration-300 ease-out;
+}
+
+.btn-2 {
+  @apply border border-[#7D1CBF] w-full rounded-xl px-2 py-3 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF] shadow-md hover:bg-[#7D1CBF] hover:text-white transition-colors duration-300 ease-out;
 }
 
 input,
 textarea {
   min-width: 300px;
   border: 1px solid black;
+  @apply shadow-md;
 }
 
 /*
