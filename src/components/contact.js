@@ -21,7 +21,7 @@ async function sendEmailViaApi(name, email, subject, message) {
   }
 }
 
-export default function ContactForm() {
+export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
@@ -128,10 +128,11 @@ export default function ContactForm() {
   };
 
   return (
-    <form className="max-w-md mx-auto mt-5 mb-5" onSubmit={handleSubmit}>
+    <form className="max-w-md mx-auto py-8 mb-5" onSubmit={handleSubmit}>
+      <div id="contact" className="relative top-[-100px]" />
       <div className="mx-5 text-center flex flex-col mb-4 gap-2 justify-center items-center">
-        <div className="bg-gray-300 text-sm p-1 rounded-lg">
-          <p>Get in Touch</p>
+        <div className="text-sm p-1 rounded-lg">
+          <h2 className="pt-4 text-base">Get in Touch</h2>
         </div>
         <h1 className="tracking-tighter text-3xl">
           Let&apos;s Discuss Your Project

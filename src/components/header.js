@@ -11,7 +11,7 @@ export default function Header() {
   };
 
   return (
-    <nav className="sticky top-0 w-full h-20 shadow-xl bg-white">
+    <nav className="sticky top-0 w-full h-20 shadow-lg bg-white z-10">
       <div className="max-w-[1600px] mx-auto h-full px-8">
         <div className="flex justify-between items-center h-full w-full ">
           <Link className="flex items-center ml-4" href="/#home">

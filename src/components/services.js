@@ -9,10 +9,11 @@ import { IoPulseOutline } from 'react-icons/io5';
 import { MdSupportAgent } from 'react-icons/md';
 import Image from 'next/image';
 import logo from '../../public/images/logo/logo-grayscale.png';
+import Link from 'next/link';
 
 export default function Services() {
   return (
-    <div className="max-w-screen mx-auto p-8 bg-gray-100 sm:text-center">
+    <div className="max-w-screen mx-auto p-8 bg-gray-100 sm:text-center shadow-lg">
       <div id="services" className="relative top-[-100px]" />
       <div className="max-w-5xl mx-auto">
         <h2 className="pb-4 text-base">Our Services</h2>
@@ -185,6 +186,11 @@ export default function Services() {
               communicate your message effectively.
             </p> */}
           </div>
+        </div>
+        <div className="pt-4">
+          <Link href={'/#about'}>
+            <button className="btn-3">Find Out More</button>
+          </Link>
         </div>
       </div>
     </div>

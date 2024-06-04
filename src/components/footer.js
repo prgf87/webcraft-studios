@@ -12,7 +12,9 @@ export default function Footer() {
         <div className="p-5">
           <ul>
             <li className="font-bold text-3xl pb-6">
-              Webcraft <span className="text-[#7D1CBF]">Studios</span>
+              <Link href={'/#home'}>
+                Webcraft <span className="text-[#7D1CBF]">Studios</span>
+              </Link>
             </li>
             <div className="flex justify-center gap-6 pb-5">
               <FaInstagram className="text-2xl cursor-pointer hover:text-yellow-600" />

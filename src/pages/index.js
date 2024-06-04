@@ -1,4 +1,4 @@
-import ContactForm from '@/components/contactForm';
+import Contact from '@/components/contact';
 import Layout from '@/components/layout';
 import About from '@/components/about';
 import Hero from '@/components/hero';
@@ -8,11 +8,12 @@ import Portfolio from '@/components/portfolio';
 export default function Home() {
   return (
     <Layout>
+      <div id="home" className="relative top-[-100px]" />
       <Hero />
       <Services />
       <Portfolio />
       <About />
-      <ContactForm />
+      <Contact />
     </Layout>
   );
 }
