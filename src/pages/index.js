@@ -8,6 +8,7 @@ import Portfolio from '@/components/portfolio';
 export default function Home() {
   return (
     <Layout>
+      <div id="home" className="relative top-[-100px]" />
       <Hero />
       <Services />
       <Portfolio />

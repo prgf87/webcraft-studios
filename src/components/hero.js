@@ -21,7 +21,7 @@ export default function Hero() {
                 for your business.
               </p>
               <div className="pt-4">
-                <Link href={'/#about-us'}>
+                <Link href={'/#about'}>
                   <button className="btn-1">Find Out More</button>
                 </Link>
               </div>

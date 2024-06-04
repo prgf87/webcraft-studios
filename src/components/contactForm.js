@@ -80,6 +80,8 @@ export default function ContactForm() {
 
   return (
     <form className="max-w-md mx-auto mt-5 mb-5" onSubmit={handleSubmit}>
+      <div id="contact" className="relative top-[-100px]" />
+
       <div className="mx-5 text-center flex flex-col mb-4 gap-2 justify-center items-center">
         <div className="bg-gray-300 text-sm p-1 rounded-lg">
           <p>Get in Touch</p>
