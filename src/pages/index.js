@@ -1,4 +1,4 @@
-import ContactForm from '@/components/contactForm';
+import Contact from '@/components/contact';
 import Layout from '@/components/layout';
 import About from '@/components/about';
 import Hero from '@/components/hero';
@@ -13,7 +13,7 @@ export default function Home() {
       <Services />
       <Portfolio />
       <About />
-      <ContactForm />
+      <Contact />
     </Layout>
   );
 }

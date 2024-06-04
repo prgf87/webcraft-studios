@@ -21,7 +21,7 @@ async function sendEmailViaApi(name, email, subject, message) {
   }
 }
 
-export default function ContactForm() {
+export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
