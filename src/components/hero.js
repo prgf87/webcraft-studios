@@ -21,7 +21,7 @@ export default function Hero() {
                 for your business.
               </p>
               <div className="pt-4">
-                <Link href={'/#about'}>
+                <Link href={'/#services'}>
                   <button className="btn-1">Find Out More</button>
                 </Link>
               </div>
@@ -35,7 +35,7 @@ export default function Hero() {
             alt="picture"
             width={5184}
             height={3456}
-            className="rounded-xl max-h-[35dvh] w-[100dvw] object-cover object-center"
+            className="rounded-xl max-h-[35dvh] w-[100dvw] object-cover object-center shadow-2xl border border-black/10"
           />
         </div>
       </div>
