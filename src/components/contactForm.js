@@ -208,10 +208,7 @@ export default function ContactForm() {
           <p className="text-red-500 text-sm">{errors.message}</p>
         )}
       </div>
-      <button
-        type="submit"
-        className="bg-black text-white px-2 py-1 rounded-md"
-      >
+      <button type="submit" className="btn-2">
         Submit
       </button>
     </form>

@@ -22,14 +22,14 @@ export default function Hero() {
               </p>
               <div className="pt-4">
                 <Link href={'/#about-us'}>
-                  <button className="primary-button">Find Out More</button>
+                  <button className="btn-1">Find Out More</button>
                 </Link>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mx-auto p-4">
+        <div className="mx-auto px-16 py-4">
           <Image
             src={pic}
             alt="picture"
