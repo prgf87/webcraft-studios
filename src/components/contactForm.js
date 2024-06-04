@@ -10,21 +10,15 @@ async function sendEmailViaApi(name, email, subject, message) {
       },
     });
     console.log(response);
+    if (response.ok) {
+      return true;
+    } else {
+      return false;
+    }
   } catch (e) {
     console.log(e);
+    return false;
   }
-  //   try {
-  //     const res = await fetch('/api/route', {
-  //       method: 'POST',
-  //       body: JSON.stringify({ name, email, subject, message }),
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //     console.log('response from sendemail function: ', res);
-  //   } catch (e) {
-  //     console.log('This is an error: ', e);
-  //   }
 }
 
 export default function ContactForm() {
@@ -40,42 +34,97 @@ export default function ContactForm() {
     message: '',
   });
 
-  //   useEffect(() => {
-  //     console.log('CHANGED');
-  //   }, [name, email, message, subject]);
+  const validateForm = () => {
+    let valid = true;
+    let errors = {};
 
-  //   const handleValidation = (e) => {
-  //     e.preventDefault();
-  //     if (name.length <= 0) {
-  //       setErrors((errors) => ({
-  //         ...errors,
-  //         name: 'Name is required',
-  //       }));
-  //     }
-  //     if (subject.length <= 0) {
-  //       errors.subject = 'Subject is required';
-  //     }
-  //     if (email.length <= 0) {
-  //       errors.email = 'Email is required';
-  //     } else if (!/\S+@\S+\.\S+/.test(email)) {
-  //       errors.email = 'Email is invalid';
-  //     }
-  //     if (message.length <= 0) {
-  //       errors.message = 'Message is required';
-  //     }
+    if (name.length <= 0) {
+      errors.name = 'Name is required';
+      valid = false;
+    }
 
-  //     if (Object.keys(errors).length === 0) {
-  //       console.log('Form submitted:', formData);
-  //       setFormData({ name: '', email: '', message: '' });
-  //     } else {
-  //       setErrors(errors);
-  //     }
-  //   };
+    if (subject.length <= 0) {
+      errors.subject = 'Subject is required';
+      valid = false;
+    }
 
-  const handleSubmit = (e) => {
+    if (email.length <= 0) {
+      errors.email = 'Email is required';
+      valid = false;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      errors.email = 'Email is invalid';
+      valid = false;
+    }
+
+    if (message.length <= 0) {
+      errors.message = 'Message is required';
+      valid = false;
+    }
+
+    setErrors(errors);
+    return valid;
+  };
+
+  const handleInputChange = (field, value) => {
+    const newErrors = { ...errors, [field]: '' };
+
+    switch (field) {
+      case 'name':
+        if (value.length <= 0) newErrors.name = 'Name is required';
+        break;
+      case 'subject':
+        if (value.length <= 0) newErrors.subject = 'Subject is required';
+        break;
+      case 'email':
+        if (value.length <= 0) newErrors.email = 'Email is required';
+        else if (!/\S+@\S+\.\S+/.test(value))
+          newErrors.email = 'Email is invalid';
+        break;
+      case 'message':
+        if (value.length <= 0) newErrors.message = 'Message is required';
+        break;
+      default:
+        break;
+    }
+
+    setErrors(newErrors);
+
+    switch (field) {
+      case 'name':
+        setName(value);
+        break;
+      case 'subject':
+        setSubject(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'message':
+        setMessage(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    sendEmailViaApi(name, email, subject, message);
+    if (validateForm()) {
+      const success = await sendEmailViaApi(name, email, subject, message);
+      if (success) {
+        setName('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
+        setErrors({
+          name: '',
+          subject: '',
+          email: '',
+          message: '',
+        });
+      }
+    }
   };
 
   return (
@@ -102,8 +151,7 @@ export default function ContactForm() {
           id="name"
           name="name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
-          //   onBlur={handleValidation}
+          onChange={(e) => handleInputChange('name', e.target.value)}
           className={`w-full border ${
             errors.name ? 'border-red-500' : 'border-gray-300'
           } rounded-md p-2`}
@@ -119,8 +167,7 @@ export default function ContactForm() {
           id="subject"
           name="subject"
           value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-          //   onBlur={handleValidation}
+          onChange={(e) => handleInputChange('subject', e.target.value)}
           className={`w-full border ${
             errors.subject ? 'border-red-500' : 'border-gray-300'
           } rounded-md p-2`}
@@ -138,8 +185,7 @@ export default function ContactForm() {
           id="email"
           name="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          //   onBlur={handleValidation}
+          onChange={(e) => handleInputChange('email', e.target.value)}
           className={`w-full border ${
             errors.email ? 'border-red-500' : 'border-gray-300'
           } rounded-md p-2`}
@@ -154,8 +200,7 @@ export default function ContactForm() {
           id="message"
           name="message"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          //   onBlur={handleValidation}
+          onChange={(e) => handleInputChange('message', e.target.value)}
           className={`w-full border ${
             errors.message ? 'border-red-500' : 'border-gray-300'
           } rounded-md p-2`}
