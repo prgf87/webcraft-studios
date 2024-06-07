@@ -7,7 +7,7 @@ export default function About() {
   return (
     <div className="max-w-screen mx-auto py-10 bg-gray-100">
       <div id="about" className="relative top-[-100px]" />
-      <div className="max-w-5xl mx-auto p-8">
+      <div className="max-w-5xl mx-auto p-4">
         <div className="grid md:grid-cols-2 mx-auto gap-x-8">
           <Image
             src={pic}
@@ -19,7 +19,7 @@ export default function About() {
 
           <div className="flex justify-start items-center text-base">
             <div>
-              <h2 className="text-4xl font-bold pb-2">
+              <h2 className="text-4xl font-bold pt-4 md:pt-0 pb-2">
                 Elevating Your Digital Presence with{' '}
                 <span className="text-[#7d1cbf]">Bespoke</span> Solutions
               </h2>
@@ -38,7 +38,7 @@ export default function About() {
                 crucial a strong online presence is in the cutthroat market of
                 today.
               </p>
-              <div className="pt-4">
+              <div className="pt-2">
                 <Link href={'/#contact'}>
                   <button className="btn-1">Schedule a Call</button>
                 </Link>

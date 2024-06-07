@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 async function sendEmailViaApi(name, email, subject, message) {
   try {
@@ -26,6 +27,7 @@ export default function Contact() {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [captcha, setCaptcha] = useState(null);
 
   const [errors, setErrors] = useState({
     name: '',
@@ -33,6 +35,12 @@ export default function Contact() {
     email: '',
     message: '',
   });
+
+  const siteKey = process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY;
+
+  const onReCaptcha = (value) => {
+    console.log('Captcha value:', value);
+  };
 
   const validateForm = () => {
     let valid = true;
@@ -128,7 +136,7 @@ export default function Contact() {
   };
 
   return (
-    <form className="max-w-md mx-auto py-8 mb-5" onSubmit={handleSubmit}>
+    <form className="max-w-md mx-auto py-8 mb-5 z-0" onSubmit={handleSubmit}>
       <div id="contact" className="relative top-[-100px]" />
       <div className="mx-5 text-center flex flex-col mb-4 gap-2 justify-center items-center">
         <div className="text-sm p-1 rounded-lg">
@@ -209,9 +217,26 @@ export default function Contact() {
           <p className="text-red-500 text-sm">{errors.message}</p>
         )}
       </div>
-      <button type="submit" className="btn-2">
-        Submit
-      </button>
+      {!captcha ? (
+        <ReCAPTCHA
+          sitekey={siteKey}
+          onChange={(e) => {
+            fetch('/api/recaptcha', {
+              method: 'POST',
+              body: e,
+            }).then(({ ok }) => {
+              if (ok === true) setCaptcha(true);
+              else alert('Recaptcha failed, please try again');
+              reset();
+            });
+          }}
+          className="flex justify-center items-center sm:mt-0"
+        />
+      ) : (
+        <button type="submit" className="btn-2">
+          Submit
+        </button>
+      )}
     </form>
   );
 }

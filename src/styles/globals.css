@@ -40,6 +40,10 @@ textarea {
   @apply shadow-md;
 }
 
+.rc-anchor {
+  width: full;
+}
+
 /*
 Generic Gradient
 primary: #7D1CBF
