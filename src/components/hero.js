@@ -15,7 +15,7 @@ export default function Hero() {
               Presence
             </h1>
             <div>
-              <p className="text-center sm:text-left">
+              <p className="text-center sm:text-left text-base pt-2">
                 We are a team of passionate designers and developers dedicated
                 to creating stunning, user-friendly websites that drive results
                 for your business.

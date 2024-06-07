@@ -18,7 +18,7 @@ export default function Layout({ children }) {
         <link rel="icon" href={metadata.icons.icon.url} />
       </Head>
       <Header />
-      <main>{children}</main>
+      <main className={raleway.className}>{children}</main>
       <Footer />
     </>
   );
