@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+
+const siteKey = process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY;
 
 async function sendEmailViaApi(name, email, subject, message) {
   try {
@@ -27,7 +29,7 @@ export default function Contact() {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
-  const [captcha, setCaptcha] = useState(null);
+  const [captcha, setCaptcha] = useState(false);
 
   const [errors, setErrors] = useState({
     name: '',
@@ -36,10 +38,30 @@ export default function Contact() {
     message: '',
   });
 
-  const siteKey = process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY;
+  useEffect(() => {}, []);
 
   const onReCaptcha = (value) => {
     console.log('Captcha value:', value);
+    fetch('/api/recaptcha', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token: value,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log('frontend response:', res);
+        if (res.success) {
+          setCaptcha(true);
+        } else {
+          setCaptcha(false);
+          // setToastError();
+        }
+      });
   };
 
   const validateForm = () => {
@@ -220,16 +242,7 @@ export default function Contact() {
       {!captcha ? (
         <ReCAPTCHA
           sitekey={siteKey}
-          onChange={(e) => {
-            fetch('/api/recaptcha', {
-              method: 'POST',
-              body: e,
-            }).then(({ ok }) => {
-              if (ok === true) setCaptcha(true);
-              else alert('Recaptcha failed, please try again');
-              reset();
-            });
-          }}
+          onChange={onReCaptcha}
           className="flex justify-center items-center sm:mt-0"
         />
       ) : (
