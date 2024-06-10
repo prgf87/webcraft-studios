@@ -222,7 +222,7 @@ export default function Contact() {
         />
         {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
       </div>
-      <div className="mb-4">
+      <div className="">
         <label htmlFor="message" className="block mb-1 text-sm">
           Message
         </label>
@@ -239,16 +239,23 @@ export default function Contact() {
           <p className="text-red-500 text-sm">{errors.message}</p>
         )}
       </div>
-      {!captcha ? (
-        <ReCAPTCHA
-          sitekey={siteKey}
-          onChange={onReCaptcha}
-          className="flex justify-center items-center sm:mt-0"
-        />
-      ) : (
-        <button type="submit" className="btn-2">
-          Submit
-        </button>
+
+      <ReCAPTCHA
+        sitekey={siteKey}
+        onChange={onReCaptcha}
+        className="flex justify-center items-center sm:mt-0"
+      />
+      <button
+        type="submit"
+        className={`${captcha ? 'btn-2 mt-1' : 'btn-2-disabled mt-1'}`}
+        disabled={captcha}
+      >
+        Submit
+      </button>
+      {captcha && (
+        <div className="flex justify-center items-center pt-8">
+          <p>Message Sent</p>
+        </div>
       )}
     </form>
   );
