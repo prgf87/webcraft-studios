@@ -3,7 +3,7 @@ import Image from 'next/image';
 import pic from '../../public/images/1.jpg';
 import Link from 'next/link';
 
-export default function About() {
+export default function Banner() {
   return (
     <div className="max-w-screen mx-auto py-10 bg-gray-100">
       <div id="about" className="relative top-[-100px]" />
