@@ -26,6 +26,8 @@ export default function Contact() {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [toastMessage, setToastMessage] = useState('');
+  const [showToast, setShowToast] = useState(false);
 
   const [errors, setErrors] = useState({
     name: '',
@@ -123,95 +125,120 @@ export default function Contact() {
           email: '',
           message: '',
         });
+        showToastMessage('Message sent successfully!');
+      } else {
+        showToastMessage('Failed to submit the form.');
       }
     }
   };
 
+  const showToastMessage = (message) => {
+    setToastMessage(message);
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
+  };
+
   return (
-    <form className="max-w-md mx-auto py-8 mb-5" onSubmit={handleSubmit}>
-      <div id="contact" className="relative top-[-100px]" />
-      <div className="mx-5 text-center flex flex-col mb-4 gap-2 justify-center items-center">
-        <div className="text-sm p-1 rounded-lg">
-          <h2 className="pt-4 text-base">Get in Touch</h2>
+    <div>
+      {showToast && (
+        <div
+          className={`fixed bottom-4 right-4 bg-green-700 text-white p-3 rounded-md shadow-lg z-50 transition-opacity duration-500 ease-in-out ${
+            showToast ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          {toastMessage}
         </div>
-        <h1 className="tracking-tighter text-3xl">
-          Let&apos;s Discuss Your Project
-        </h1>
-        <p className="font-normal tracking-tight">
-          Fill out the form below and one of our experts will be in touch to
-          discuss your web design and development needs.
-        </p>
-      </div>
-      <div className="mb-4">
-        <label htmlFor="name" className="block mb-1 text-sm">
-          Name
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={name}
-          onChange={(e) => handleInputChange('name', e.target.value)}
-          className={`w-full border ${
-            errors.name ? 'border-red-500' : 'border-gray-300'
-          } rounded-md p-2`}
-        />
-        {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
-      </div>
-      <div className="mb-4">
-        <label htmlFor="subject" className="block mb-1 text-sm">
-          Subject
-        </label>
-        <input
-          type="text"
-          id="subject"
-          name="subject"
-          value={subject}
-          onChange={(e) => handleInputChange('subject', e.target.value)}
-          className={`w-full border ${
-            errors.subject ? 'border-red-500' : 'border-gray-300'
-          } rounded-md p-2`}
-        />
-        {errors.subject && (
-          <p className="text-red-500 text-sm">{errors.subject}</p>
-        )}
-      </div>
-      <div className="mb-4">
-        <label htmlFor="email" className="block mb-1 text-sm">
-          Email
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          onChange={(e) => handleInputChange('email', e.target.value)}
-          className={`w-full border ${
-            errors.email ? 'border-red-500' : 'border-gray-300'
-          } rounded-md p-2`}
-        />
-        {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-      </div>
-      <div className="mb-4">
-        <label htmlFor="message" className="block mb-1 text-sm">
-          Message
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          value={message}
-          onChange={(e) => handleInputChange('message', e.target.value)}
-          className={`w-full border ${
-            errors.message ? 'border-red-500' : 'border-gray-300'
-          } rounded-md p-2`}
-        ></textarea>
-        {errors.message && (
-          <p className="text-red-500 text-sm">{errors.message}</p>
-        )}
-      </div>
-      <button type="submit" className="btn-2">
-        Submit
-      </button>
-    </form>
+      )}
+      <form className="max-w-md mx-auto py-8 mb-5" onSubmit={handleSubmit}>
+        <div id="contact" className="relative top-[-100px]" />
+        <div className="mx-5 text-center flex flex-col mb-4 gap-2 justify-center items-center">
+          <div className="text-sm p-1 rounded-lg">
+            <h2 className="pt-4 text-base">Get in Touch</h2>
+          </div>
+          <h1 className="tracking-tighter text-3xl">
+            Let&apos;s Discuss Your{' '}
+            <span className="text-[#7D1CBF]">Project</span>
+          </h1>
+          <p className="font-normal tracking-tight">
+            Fill out the form below and one of our experts will be in touch to
+            discuss your web design and development needs.
+          </p>
+        </div>
+        <div className="mb-4">
+          <label htmlFor="name" className="block mb-1 text-sm">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            onChange={(e) => handleInputChange('name', e.target.value)}
+            className={`w-full border ${
+              errors.name ? 'border-red-500' : 'border-gray-300'
+            } rounded-md p-2`}
+          />
+          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+        </div>
+        <div className="mb-4">
+          <label htmlFor="subject" className="block mb-1 text-sm">
+            Subject
+          </label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            value={subject}
+            onChange={(e) => handleInputChange('subject', e.target.value)}
+            className={`w-full border ${
+              errors.subject ? 'border-red-500' : 'border-gray-300'
+            } rounded-md p-2`}
+          />
+          {errors.subject && (
+            <p className="text-red-500 text-sm">{errors.subject}</p>
+          )}
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block mb-1 text-sm">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => handleInputChange('email', e.target.value)}
+            className={`w-full border ${
+              errors.email ? 'border-red-500' : 'border-gray-300'
+            } rounded-md p-2`}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email}</p>
+          )}
+        </div>
+        <div className="mb-4">
+          <label htmlFor="message" className="block mb-1 text-sm">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={message}
+            onChange={(e) => handleInputChange('message', e.target.value)}
+            className={`w-full border ${
+              errors.message ? 'border-red-500' : 'border-gray-300'
+            } rounded-md p-2`}
+          ></textarea>
+          {errors.message && (
+            <p className="text-red-500 text-sm">{errors.message}</p>
+          )}
+        </div>
+        <button type="submit" className="btn-2">
+          Submit
+        </button>
+      </form>
+    </div>
   );
 }
