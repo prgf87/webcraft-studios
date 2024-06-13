@@ -1,10 +1,10 @@
 import Contact from '@/components/contact';
 import Layout from '@/components/layout';
-import About from '@/components/about';
+import Banner from '@/components/banner';
 import Hero from '@/components/hero';
 import Services from '@/components/services';
 import Portfolio from '@/components/portfolio';
-import Hero2 from '@/components/hero2';
+import About from '@/components/about';
 
 export default function Home() {
   return (
@@ -13,8 +13,8 @@ export default function Home() {
       <Hero />
       <Services />
       <Portfolio />
-      <Hero2 />
       <About />
+      <Banner />
       <Contact />
     </Layout>
   );

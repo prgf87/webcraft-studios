@@ -26,11 +26,19 @@ h6 {
 }
 
 .btn-2 {
-  @apply border border-[#7D1CBF] w-full rounded-xl px-2 py-4 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF] shadow-md hover:bg-[#7D1CBF] hover:text-white transition-colors duration-300 ease-out;
+  @apply border border-[#7D1CBF] w-full rounded-xl px-2 py-6 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF] shadow-md hover:bg-[#7D1CBF] hover:text-white transition-colors duration-300 ease-out;
+}
+
+.btn-2-disabled {
+  @apply border border-[#7D1CBF]/30 w-full rounded-xl px-2 py-6 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF]/30 shadow-md cursor-not-allowed;
 }
 
 .btn-3 {
   @apply border border-[#7D1CBF] rounded-xl px-8 py-4 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF] shadow-md hover:bg-[#7D1CBF] hover:text-white transition-colors duration-300 ease-out;
+}
+
+.btn-4 {
+  @apply border border-[#7D1CBF] rounded-xl px-3 py-1 my-4 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF] shadow-md hover:bg-[#7D1CBF]/90 hover:text-white transition-colors duration-300 ease-out;
 }
 
 input,
@@ -38,6 +46,10 @@ textarea {
   min-width: 300px;
   border: 1px solid black;
   @apply shadow-md;
+}
+
+.rc-anchor {
+  width: full;
 }
 
 /*

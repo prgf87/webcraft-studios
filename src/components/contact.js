@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+const siteKey = process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY;
 
 async function sendEmailViaApi(name, email, subject, message) {
   try {
@@ -28,6 +31,7 @@ export default function Contact() {
   const [message, setMessage] = useState('');
   const [toastMessage, setToastMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
+  const [captcha, setCaptcha] = useState(false);
 
   const [errors, setErrors] = useState({
     name: '',
@@ -35,6 +39,32 @@ export default function Contact() {
     email: '',
     message: '',
   });
+
+  useEffect(() => {}, []);
+
+  const onReCaptcha = (value) => {
+    console.log('Captcha value:', value);
+    fetch('/api/recaptcha', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token: value,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log('frontend response:', res);
+        if (res.success) {
+          setCaptcha(true);
+        } else {
+          setCaptcha(false);
+          // setToastError();
+        }
+      });
+  };
 
   const validateForm = () => {
     let valid = true;
@@ -151,7 +181,7 @@ export default function Contact() {
           {toastMessage}
         </div>
       )}
-      <form className="max-w-md mx-auto py-8 mb-5" onSubmit={handleSubmit}>
+      <form className="max-w-md mx-auto py-8 mb-5 z-0" onSubmit={handleSubmit}>
         <div id="contact" className="relative top-[-100px]" />
         <div className="mx-5 text-center flex flex-col mb-4 gap-2 justify-center items-center">
           <div className="text-sm p-1 rounded-lg">
@@ -218,7 +248,7 @@ export default function Contact() {
             <p className="text-red-500 text-sm">{errors.email}</p>
           )}
         </div>
-        <div className="mb-4">
+        <div className="">
           <label htmlFor="message" className="block mb-1 text-sm">
             Message
           </label>
@@ -235,9 +265,24 @@ export default function Contact() {
             <p className="text-red-500 text-sm">{errors.message}</p>
           )}
         </div>
-        <button type="submit" className="btn-2">
+
+        <ReCAPTCHA
+          sitekey={siteKey}
+          onChange={onReCaptcha}
+          className="flex justify-center items-center sm:mt-0"
+        />
+        <button
+          type="submit"
+          className={`${captcha ? 'btn-2 mt-1' : 'btn-2-disabled mt-1'}`}
+          disabled={captcha}
+        >
           Submit
         </button>
+        {captcha && (
+          <div className="flex justify-center items-center pt-8">
+            <p>Message Sent</p>
+          </div>
+        )}
       </form>
     </div>
   );
