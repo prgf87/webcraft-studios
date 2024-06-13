@@ -4,6 +4,7 @@ import Banner from '@/components/banner';
 import Hero from '@/components/hero';
 import Services from '@/components/services';
 import Portfolio from '@/components/portfolio';
+import About from '@/components/about';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Services />
       <Portfolio />
+      <About />
       <Banner />
       <Contact />
     </Layout>

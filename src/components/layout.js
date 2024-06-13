@@ -18,7 +18,9 @@ export default function Layout({ children }) {
         <link rel="icon" href={metadata.icons.icon.url} />
       </Head>
       <Header />
-      <main className={raleway.className}>{children}</main>
+      <main className={`${raleway.className} overflow-x-hidden`}>
+        {children}
+      </main>
       <Footer />
     </>
   );
