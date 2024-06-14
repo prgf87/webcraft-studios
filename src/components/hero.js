@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <div className="max-w-xl sm:max-w-5xl mx-auto py-8">
+    <div className="max-w-xl sm:max-w-5xl mx-auto py-16">
       <div className="grid lg:grid-cols-2 mx-auto ">
         <div className="flex justify-start items-center p-4">
           <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-x-8">
@@ -20,7 +20,7 @@ export default function Hero() {
                 to creating stunning, user-friendly websites that drive results
                 for your business.
               </p>
-              <div className="pt-4 flex justify-center sm:justify-start items-center">
+              <div className="pt-3 flex justify-center sm:justify-start items-center">
                 <Link href={'/#services'}>
                   <button className="btn-1">Find Out More</button>
                 </Link>

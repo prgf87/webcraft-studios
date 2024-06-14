@@ -29,9 +29,9 @@ export default function Contact() {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('idle');
   const [toastMessage, setToastMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
-  const [captcha, setCaptcha] = useState(false);
 
   const [errors, setErrors] = useState({
     name: '',
@@ -43,27 +43,32 @@ export default function Contact() {
   useEffect(() => {}, []);
 
   const onReCaptcha = (value) => {
-    console.log('Captcha value:', value);
-    fetch('/api/recaptcha', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        token: value,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log('frontend response:', res);
-        if (res.success) {
-          setCaptcha(true);
-        } else {
-          setCaptcha(false);
-          // setToastError();
-        }
-      });
+    // console.log('Captcha value:', value);
+    setStatus('submitting');
+    try {
+      fetch('/api/recaptcha', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token: value,
+        }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log('frontend response:', res);
+          if (res.success) {
+            setStatus('success');
+          } else {
+            setStatus('error');
+            // setToastError();
+          }
+        });
+    } catch (e) {
+      console.log('Error: ', e);
+    }
   };
 
   const validateForm = () => {
@@ -142,7 +147,8 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (validateForm()) {
+    if (validateForm() && status === 'success') {
+      setStatus('submitting');
       const success = await sendEmailViaApi(name, email, subject, message);
       if (success) {
         setName('');
@@ -156,8 +162,10 @@ export default function Contact() {
           message: '',
         });
         showToastMessage('Message sent successfully!');
+        setStatus('sent');
       } else {
         showToastMessage('Failed to submit the form.');
+        setStatus('idle');
       }
     }
   };
@@ -174,7 +182,7 @@ export default function Contact() {
     <div>
       {showToast && (
         <div
-          className={`fixed bottom-4 right-4 bg-green-700 text-white p-3 rounded-md shadow-lg z-50 transition-opacity duration-500 ease-in-out ${
+          className={`fixed bottom-8 right-8 bg-green-700 text-white p-3 rounded-md shadow-lg z-50 transition-opacity duration-500 ease-in-out ${
             showToast ? 'opacity-100' : 'opacity-0'
           }`}
         >
@@ -212,24 +220,7 @@ export default function Contact() {
           />
           {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
         </div>
-        <div className="mb-4">
-          <label htmlFor="subject" className="block mb-1 text-sm">
-            Subject
-          </label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            value={subject}
-            onChange={(e) => handleInputChange('subject', e.target.value)}
-            className={`w-full border ${
-              errors.subject ? 'border-red-500' : 'border-gray-300'
-            } rounded-md p-2`}
-          />
-          {errors.subject && (
-            <p className="text-red-500 text-sm">{errors.subject}</p>
-          )}
-        </div>
+
         <div className="mb-4">
           <label htmlFor="email" className="block mb-1 text-sm">
             Email
@@ -248,6 +239,26 @@ export default function Contact() {
             <p className="text-red-500 text-sm">{errors.email}</p>
           )}
         </div>
+
+        <div className="mb-4">
+          <label htmlFor="subject" className="block mb-1 text-sm">
+            Subject
+          </label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            value={subject}
+            onChange={(e) => handleInputChange('subject', e.target.value)}
+            className={`w-full border ${
+              errors.subject ? 'border-red-500' : 'border-gray-300'
+            } rounded-md p-2`}
+          />
+          {errors.subject && (
+            <p className="text-red-500 text-sm">{errors.subject}</p>
+          )}
+        </div>
+
         <div className="">
           <label htmlFor="message" className="block mb-1 text-sm">
             Message
@@ -273,12 +284,16 @@ export default function Contact() {
         />
         <button
           type="submit"
-          className={`${captcha ? 'btn-2 mt-1' : 'btn-2-disabled mt-1'}`}
-          disabled={captcha}
+          className={`${
+            status === 'idle' || status === 'submitting'
+              ? 'btn-2-disabled mt-1'
+              : 'btn-2 mt-1'
+          }`}
+          disabled={status === 'idle' || status === 'submitting'}
         >
           Submit
         </button>
-        {captcha && (
+        {status === 'success' && (
           <div className="flex justify-center items-center pt-8">
             <p>Message Sent</p>
           </div>

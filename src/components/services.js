@@ -236,11 +236,11 @@ export default function Services() {
             </p> */}
           </div>
         </div>
-        {/* <div className="pt-4">
-          <Link href={'/#about'}>
+        <div className="pt-4">
+          <Link href={'/#portfolio'}>
             <button className="btn-3">Find Out More</button>
           </Link>
-        </div> */}
+        </div>
       </div>
     </div>
   );
