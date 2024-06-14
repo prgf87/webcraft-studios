@@ -104,6 +104,8 @@ import profilePicJosh from '../../public/images/josh.png';
 export default function About() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
+      <div id="about" className="relative top-[-100px]" />
+
       {/* First Section */}
       <div className="flex flex-col md:flex-row items-center justify-between bg-white mb-8">
         <div className="text-sm mx-auto">

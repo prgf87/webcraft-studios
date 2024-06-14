@@ -15,7 +15,7 @@ export default function Layout({ children }) {
       <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
-        <link rel="icon" href={metadata.icons.icon.url} />
+        <link rel="icon" href="/logo.png" sizes="any" />
       </Head>
       <Header />
       <main className={`${raleway.className} overflow-x-hidden`}>

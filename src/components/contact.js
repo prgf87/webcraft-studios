@@ -29,9 +29,10 @@ export default function Contact() {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('idle');
   const [toastMessage, setToastMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
-  const [captcha, setCaptcha] = useState(false);
+  const [sentEmail, setSentEmail] = useState(false);
 
   const [errors, setErrors] = useState({
     name: '',
@@ -43,27 +44,32 @@ export default function Contact() {
   useEffect(() => {}, []);
 
   const onReCaptcha = (value) => {
-    console.log('Captcha value:', value);
-    fetch('/api/recaptcha', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        token: value,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log('frontend response:', res);
-        if (res.success) {
-          setCaptcha(true);
-        } else {
-          setCaptcha(false);
-          // setToastError();
-        }
-      });
+    setStatus('submitting');
+    try {
+      fetch('/api/recaptcha', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token: value,
+        }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log('frontend response:', res);
+          if (res.success) {
+            setStatus('success');
+          } else {
+            setStatus('error');
+          }
+        });
+    } catch (e) {
+      console.log('Error: ', e);
+      showToastMessage('Failed to submit the form.');
+      setStatus('idle');
+    }
   };
 
   const validateForm = () => {
@@ -143,6 +149,8 @@ export default function Contact() {
     e.preventDefault();
 
     if (validateForm()) {
+      console.log('here');
+      setStatus('submitting');
       const success = await sendEmailViaApi(name, email, subject, message);
       if (success) {
         setName('');
@@ -156,8 +164,11 @@ export default function Contact() {
           message: '',
         });
         showToastMessage('Message sent successfully!');
+        setStatus('sent');
+        setSentEmail(true);
       } else {
         showToastMessage('Failed to submit the form.');
+        setStatus('idle');
       }
     }
   };
@@ -165,25 +176,13 @@ export default function Contact() {
   const showToastMessage = (message) => {
     setToastMessage(message);
     setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 3000);
   };
 
   return (
     <div>
-      {showToast && (
-        <div
-          className={`fixed bottom-4 right-4 bg-green-700 text-white p-3 rounded-md shadow-lg z-50 transition-opacity duration-500 ease-in-out ${
-            showToast ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          {toastMessage}
-        </div>
-      )}
       <form className="max-w-md mx-auto py-8 mb-5 z-0" onSubmit={handleSubmit}>
         <div id="contact" className="relative top-[-100px]" />
-        <div className="mx-5 text-center flex flex-col mb-4 gap-2 justify-center items-center">
+        <div className=" flex flex-col mb-4 gap-2 justify-center items-center">
           <div className="text-sm p-1 rounded-lg">
             <h2 className="pt-4 text-base">Get in Touch</h2>
           </div>
@@ -191,7 +190,7 @@ export default function Contact() {
             Let&apos;s Discuss Your{' '}
             <span className="text-[#7D1CBF]">Project</span>
           </h1>
-          <p className="font-normal tracking-tight">
+          <p className="text-lg tracking-tighter text-center">
             Fill out the form below and one of our experts will be in touch to
             discuss your web design and development needs.
           </p>
@@ -212,24 +211,7 @@ export default function Contact() {
           />
           {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
         </div>
-        <div className="mb-4">
-          <label htmlFor="subject" className="block mb-1 text-sm">
-            Subject
-          </label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            value={subject}
-            onChange={(e) => handleInputChange('subject', e.target.value)}
-            className={`w-full border ${
-              errors.subject ? 'border-red-500' : 'border-gray-300'
-            } rounded-md p-2`}
-          />
-          {errors.subject && (
-            <p className="text-red-500 text-sm">{errors.subject}</p>
-          )}
-        </div>
+
         <div className="mb-4">
           <label htmlFor="email" className="block mb-1 text-sm">
             Email
@@ -248,6 +230,26 @@ export default function Contact() {
             <p className="text-red-500 text-sm">{errors.email}</p>
           )}
         </div>
+
+        <div className="mb-4">
+          <label htmlFor="subject" className="block mb-1 text-sm">
+            Subject
+          </label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            value={subject}
+            onChange={(e) => handleInputChange('subject', e.target.value)}
+            className={`w-full border ${
+              errors.subject ? 'border-red-500' : 'border-gray-300'
+            } rounded-md p-2`}
+          />
+          {errors.subject && (
+            <p className="text-red-500 text-sm">{errors.subject}</p>
+          )}
+        </div>
+
         <div className="">
           <label htmlFor="message" className="block mb-1 text-sm">
             Message
@@ -266,22 +268,39 @@ export default function Contact() {
           )}
         </div>
 
-        <ReCAPTCHA
-          sitekey={siteKey}
-          onChange={onReCaptcha}
-          className="flex justify-center items-center sm:mt-0"
-        />
-        <button
-          type="submit"
-          className={`${captcha ? 'btn-2 mt-1' : 'btn-2-disabled mt-1'}`}
-          disabled={captcha}
-        >
-          Submit
-        </button>
-        {captcha && (
-          <div className="flex justify-center items-center pt-8">
-            <p>Message Sent</p>
+        {showToast ? (
+          <div
+            className={`relative w-full  text-white p-3 rounded-md shadow-lg z-50 transition-opacity text-center mt-4 duration-500 ease-in-out ${
+              showToast ? 'opacity-100' : 'opacity-0'
+            } ${!errors.message ? 'bg-green-700' : 'bg-red-700'}`}
+          >
+            {toastMessage}
           </div>
+        ) : (
+          <>
+            <ReCAPTCHA
+              sitekey={siteKey}
+              onChange={onReCaptcha}
+              className="flex justify-center items-center sm:mt-0"
+            />
+            <button
+              type="submit"
+              className={`${
+                status === 'idle' ||
+                status === 'submitting' ||
+                sentEmail === true
+                  ? 'btn-2-disabled mt-1'
+                  : 'btn-2 mt-1'
+              }`}
+              disabled={
+                status === 'idle' ||
+                status === 'submitting' ||
+                sentEmail === true
+              }
+            >
+              Submit
+            </button>
+          </>
         )}
       </form>
     </div>
