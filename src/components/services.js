@@ -1,16 +1,14 @@
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import logo from '../../public/images/logo/logo.png';
 import {
   SiAntdesign,
   SiEsotericsoftware,
   SiWesterndigital,
 } from 'react-icons/si';
 import { IoPulseOutline } from 'react-icons/io5';
-
 import { MdSupportAgent } from 'react-icons/md';
-import Image from 'next/image';
-import logo from '../../public/images/logo/logo-grayscale.png';
-import Link from 'next/link';
-import { FaArrowRight } from 'react-icons/fa';
 
 export default function Services() {
   return (
@@ -28,7 +26,7 @@ export default function Services() {
           </p>
         </div>
         <div className="grid md:grid-cols-3 mx-auto gap-x-4">
-          <div className="pt-8 flex flex-col border p-4 rounded-xl shadow-md">
+          <div className="mt-8 flex flex-col border p-4 rounded-xl shadow-md">
             <div className="flex justify-center items-center">
               <SiAntdesign size={100} />
             </div>
@@ -40,14 +38,7 @@ export default function Services() {
               meticulously crafting each site to capture your company&apos;s
               essence and core values.
             </p>
-            <div className="flex justify-center items-center pt-7 text-base">
-              <button className="btn-4 flex group-hover:">
-                Learn more{' '}
-                <span className="pl-2 pt-1">
-                  <FaArrowRight />
-                </span>
-              </button>
-            </div>
+
             {/* <p className="pt-4 text-sm  text-left">
               Our process begins with an in-depth analysis of your target market
               and business objectives, ensuring that every design is both
@@ -63,9 +54,9 @@ export default function Services() {
               growth and reflects your brand&apos;s unique identity.
             </p> */}
           </div>
-          <div className="pt-8 flex flex-col border p-4 rounded-xl shadow-md">
+          <div className="mt-8 flex flex-col border p-4 rounded-xl shadow-md">
             <div className="flex justify-center items-center">
-              <SiEsotericsoftware size={100} />
+              <SiEsotericsoftware size={100} className="fill-[#7D1CBF]" />
             </div>
             <h3 className="text-sm sm:text-lg font-bold pt-4 ">
               <span className="">Software Design</span>
@@ -75,14 +66,7 @@ export default function Services() {
               your business needs, including web applications, e-commerce
               platforms, and content management systems (CMS).
             </p>
-            <div className="flex justify-center items-center pt-2 text-base">
-              <button className="btn-4 flex group-hover:">
-                Learn more{' '}
-                <span className="pl-2 pt-1">
-                  <FaArrowRight />
-                </span>
-              </button>
-            </div>
+
             {/* <p className="pt-4 text-sm  text-left">
               Our team of skilled experts leverages the latest programming
               languages and technologies to deliver high-quality, scalable, and
@@ -97,7 +81,7 @@ export default function Services() {
               app, we provide the expertise to bring your vision to life.
             </p> */}
           </div>
-          <div className="pt-8 flex flex-col border p-4 rounded-xl shadow-md">
+          <div className="mt-8 flex flex-col border p-4 rounded-xl shadow-md">
             <div className="flex justify-center items-center">
               <MdSupportAgent size={100} />
             </div>
@@ -110,14 +94,7 @@ export default function Services() {
               continuous support to keep your website running smoothly and
               up-to-date.
             </p>
-            <div className="flex justify-center items-center pt-2 text-base">
-              <button className="btn-4 flex group-hover:">
-                Learn more{' '}
-                <span className="pl-2 pt-1">
-                  <FaArrowRight />
-                </span>
-              </button>
-            </div>
+
             {/* <p className="pt-4 text-sm  text-left">
               At Webcraft Studios, our dedicated team provides continuous
               support to keep your website running smoothly and up-to-date.
@@ -134,25 +111,19 @@ export default function Services() {
           </div>
           <div className="my-8 flex flex-col border p-4 rounded-xl shadow-md">
             <div className="flex justify-center items-center">
-              <IoPulseOutline size={100} />
+              <IoPulseOutline size={100} className="text-[#7D1CBF]" />
             </div>
             <h3 className="text-sm sm:text-lg font-bold pt-4 ">
               <span className="">Search Engine Optimisation</span>
             </h3>
             <p className="pt-4 text-sm  text-left">
               In today&apos;s competitive online landscape, visibility is key.
-              Our comprehensive SEO services are designed to enhance your
-              website&apos;s search engine ranking, driving organic traffic and
-              increasing your online presence.
+              Our comprehensive{' '}
+              <span className="font-bold text-[#7d1cbf]">SEO</span> services are
+              designed to enhance your website&apos;s search engine ranking,
+              driving organic traffic and increasing your online presence.
             </p>
-            <div className="flex justify-center items-center pt-2 text-base">
-              <button className="btn-4 flex group-hover:">
-                Learn more{' '}
-                <span className="pl-2 pt-1">
-                  <FaArrowRight />
-                </span>
-              </button>
-            </div>
+
             {/* <p className="pt-4 text-sm  text-left">
               We utilize proven strategies and the latest tools to optimize your
               site for search engines, ensuring that your target audience can
@@ -180,14 +151,7 @@ export default function Services() {
               services, including social media management, email marketing, and
               pay-per-click advertising.
             </p>
-            <div className="flex justify-center items-center pt-2 text-base">
-              <button className="btn-4 flex group-hover:">
-                Learn more{' '}
-                <span className="pl-2 pt-1">
-                  <FaArrowRight />
-                </span>
-              </button>
-            </div>
+
             {/* <p className="pt-4 text-sm  text-left">
               At Webcraft Studios, we offer a full suite of digital marketing
               services, including social media management, email marketing, and
@@ -206,7 +170,13 @@ export default function Services() {
           </div>
           <div className="my-8 flex flex-col border p-4 rounded-xl shadow-md">
             <div className="flex justify-center items-center">
-              <Image src={logo} alt="logo b&w" height={92} width={92} />
+              <Image
+                src={logo}
+                alt="company logo"
+                height={92}
+                width={92}
+                className="text-[#7D1CBF]"
+              />
             </div>
             <h3 className="text-sm sm:text-lg font-bold pt-4 ">
               <span className="">Branding</span>
@@ -216,14 +186,7 @@ export default function Services() {
               impression. At Webcraft Studios, we help you create a cohesive and
               compelling brand that resonates with your audience.
             </p>
-            <div className="flex justify-center items-center pt-12 text-base">
-              <button className="btn-4 flex group-hover:">
-                Learn more{' '}
-                <span className="pl-2 pt-1">
-                  <FaArrowRight />
-                </span>
-              </button>
-            </div>
+
             {/*  <p className="pt-4 text-sm  text-left">
               Our branding services include logo design, visual identity, and
               brand strategy development.
@@ -238,7 +201,7 @@ export default function Services() {
         </div>
         <div className="pt-4">
           <Link href={'/#portfolio'}>
-            <button className="btn-3">Find Out More</button>
+            <button className="btn-3">Our Portfolio</button>
           </Link>
         </div>
       </div>

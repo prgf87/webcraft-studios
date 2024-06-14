@@ -7,6 +7,7 @@ import project3 from '../../public/images/projects/2.jpg';
 import project4 from '../../public/images/projects/4.jpg';
 import project5 from '../../public/images/projects/5.jpg';
 import project6 from '../../public/images/projects/6.png';
+import Link from 'next/link';
 
 export default function Portfolio() {
   return (
@@ -21,7 +22,7 @@ export default function Portfolio() {
           </p>
         </div>
         <div className="grid md:grid-cols-3 mx-auto gap-4">
-          <div className="flex flex-col flex-1 rounded overflow-hidden shadow-md">
+          {/* <div className="flex flex-col flex-1 rounded overflow-hidden shadow-md">
             <Image src={project1} alt="pic1" />
             <div className="p-4">
               <h3 className="text-sm sm:text-lg font-bold">
@@ -32,8 +33,8 @@ export default function Portfolio() {
                 in USA.
               </p>
             </div>
-          </div>
-          <div className="flex flex-col flex-1 border rounded overflow-hidden shadow-md">
+          </div> */}
+          {/* <div className="flex flex-col flex-1 border rounded overflow-hidden shadow-md">
             <Image src={project2} alt="pic2" />
             <div className="p-4">
               <h3 className="text-sm sm:text-lg font-bold">
@@ -44,7 +45,7 @@ export default function Portfolio() {
                 traders by taking the hassle out of the process.
               </p>
             </div>
-          </div>
+          </div> */}
           <div className="flex flex-col flex-1 border rounded overflow-hidden shadow-md">
             <Image src={project3} alt="pic3" />
             <div className="p-4">
@@ -80,7 +81,7 @@ export default function Portfolio() {
               </p>
             </div>
           </div>
-          <div className="flex flex-col flex-1 border rounded overflow-hidden shadow-md">
+          {/* <div className="flex flex-col flex-1 border rounded overflow-hidden shadow-md">
             <Image src={project6} alt="pic3" />
             <div className="p-4">
               <h3 className="text-sm sm:text-lg font-bold">
@@ -91,7 +92,12 @@ export default function Portfolio() {
                 developer.
               </p>
             </div>
-          </div>
+          </div> */}
+        </div>
+        <div className="flex justify-center items-center pt-8 mx-auto">
+          <Link href={'/#about'}>
+            <button className="btn-3">Learn More</button>
+          </Link>
         </div>
       </div>
     </div>

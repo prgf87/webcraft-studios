@@ -191,7 +191,7 @@ export default function Contact() {
       )}
       <form className="max-w-md mx-auto py-8 mb-5 z-0" onSubmit={handleSubmit}>
         <div id="contact" className="relative top-[-100px]" />
-        <div className="mx-5 text-center flex flex-col mb-4 gap-2 justify-center items-center">
+        <div className=" flex flex-col mb-4 gap-2 justify-center items-center">
           <div className="text-sm p-1 rounded-lg">
             <h2 className="pt-4 text-base">Get in Touch</h2>
           </div>
@@ -199,7 +199,7 @@ export default function Contact() {
             Let&apos;s Discuss Your{' '}
             <span className="text-[#7D1CBF]">Project</span>
           </h1>
-          <p className="font-normal tracking-tight">
+          <p className="text-lg tracking-tighter text-center">
             Fill out the form below and one of our experts will be in touch to
             discuss your web design and development needs.
           </p>
