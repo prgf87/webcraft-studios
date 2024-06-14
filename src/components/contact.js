@@ -32,6 +32,7 @@ export default function Contact() {
   const [status, setStatus] = useState('idle');
   const [toastMessage, setToastMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
+  const [sentEmail, setSentEmail] = useState(false);
 
   const [errors, setErrors] = useState({
     name: '',
@@ -43,7 +44,6 @@ export default function Contact() {
   useEffect(() => {}, []);
 
   const onReCaptcha = (value) => {
-    // console.log('Captcha value:', value);
     setStatus('submitting');
     try {
       fetch('/api/recaptcha', {
@@ -63,11 +63,12 @@ export default function Contact() {
             setStatus('success');
           } else {
             setStatus('error');
-            // setToastError();
           }
         });
     } catch (e) {
       console.log('Error: ', e);
+      showToastMessage('Failed to submit the form.');
+      setStatus('idle');
     }
   };
 
@@ -147,7 +148,8 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (validateForm() && status === 'success') {
+    if (validateForm()) {
+      console.log('here');
       setStatus('submitting');
       const success = await sendEmailViaApi(name, email, subject, message);
       if (success) {
@@ -163,6 +165,7 @@ export default function Contact() {
         });
         showToastMessage('Message sent successfully!');
         setStatus('sent');
+        setSentEmail(true);
       } else {
         showToastMessage('Failed to submit the form.');
         setStatus('idle');
@@ -173,22 +176,10 @@ export default function Contact() {
   const showToastMessage = (message) => {
     setToastMessage(message);
     setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 3000);
   };
 
   return (
     <div>
-      {showToast && (
-        <div
-          className={`fixed bottom-8 right-8 bg-green-700 text-white p-3 rounded-md shadow-lg z-50 transition-opacity duration-500 ease-in-out ${
-            showToast ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          {toastMessage}
-        </div>
-      )}
       <form className="max-w-md mx-auto py-8 mb-5 z-0" onSubmit={handleSubmit}>
         <div id="contact" className="relative top-[-100px]" />
         <div className=" flex flex-col mb-4 gap-2 justify-center items-center">
@@ -277,26 +268,39 @@ export default function Contact() {
           )}
         </div>
 
-        <ReCAPTCHA
-          sitekey={siteKey}
-          onChange={onReCaptcha}
-          className="flex justify-center items-center sm:mt-0"
-        />
-        <button
-          type="submit"
-          className={`${
-            status === 'idle' || status === 'submitting'
-              ? 'btn-2-disabled mt-1'
-              : 'btn-2 mt-1'
-          }`}
-          disabled={status === 'idle' || status === 'submitting'}
-        >
-          Submit
-        </button>
-        {status === 'success' && (
-          <div className="flex justify-center items-center pt-8">
-            <p>Message Sent</p>
+        {showToast ? (
+          <div
+            className={`relative w-full  text-white p-3 rounded-md shadow-lg z-50 transition-opacity text-center mt-4 duration-500 ease-in-out ${
+              showToast ? 'opacity-100' : 'opacity-0'
+            } ${!errors.message ? 'bg-green-700' : 'bg-red-700'}`}
+          >
+            {toastMessage}
           </div>
+        ) : (
+          <>
+            <ReCAPTCHA
+              sitekey={siteKey}
+              onChange={onReCaptcha}
+              className="flex justify-center items-center sm:mt-0"
+            />
+            <button
+              type="submit"
+              className={`${
+                status === 'idle' ||
+                status === 'submitting' ||
+                sentEmail === true
+                  ? 'btn-2-disabled mt-1'
+                  : 'btn-2 mt-1'
+              }`}
+              disabled={
+                status === 'idle' ||
+                status === 'submitting' ||
+                sentEmail === true
+              }
+            >
+              Submit
+            </button>
+          </>
         )}
       </form>
     </div>
