@@ -270,9 +270,9 @@ export default function Contact() {
 
         {showToast ? (
           <div
-            className={`relative w-full  text-white p-3 rounded-md shadow-lg z-50 transition-opacity text-center mt-4 duration-500 ease-in-out ${
+            className={`relative w-full bg-green-700 text-white p-3 rounded-md shadow-lg z-50 transition-opacity text-center mt-4 duration-500 ease-in-out ${
               showToast ? 'opacity-100' : 'opacity-0'
-            } ${!errors.message ? 'bg-green-700' : 'bg-red-700'}`}
+            }`}
           >
             {toastMessage}
           </div>
@@ -281,7 +281,10 @@ export default function Contact() {
             <ReCAPTCHA
               sitekey={siteKey}
               onChange={onReCaptcha}
-              className="flex justify-center items-center sm:mt-0"
+              className="flex justify-stretch items-center sm:mt-0"
+              badge="inline"
+              size="normal"
+              style={{ width: '600px' }}
             />
             <button
               type="submit"
