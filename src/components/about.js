@@ -104,6 +104,8 @@ import profilePicJosh from '../../public/images/josh.png';
 export default function About() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
+      <div id="about" className="relative top-[-100px]" />
+
       {/* First Section */}
       <div className="flex flex-col md:flex-row items-center justify-between bg-white mb-8">
         <div className="text-sm mx-auto">
@@ -135,9 +137,7 @@ export default function About() {
             <Image
               src={profilePicPedro}
               alt="Profile Picture"
-              className="rounded-full"
-              layout="fill"
-              objectFit="cover"
+              className="rounded-full object-cover"
             />
             <div className="absolute bottom-0 right-[-40px] w-28 h-28 bg-purple-500 text-white flex items-center justify-center rounded-full transform translate-x-4 translate-y-4">
               <p className="text-center text-sm">
@@ -179,9 +179,7 @@ export default function About() {
             <Image
               src={profilePicJosh}
               alt="Profile Picture"
-              className="rounded-full"
-              layout="fill"
-              objectFit="cover"
+              className="rounded-full object-cover"
             />
             <div className="absolute bottom-0 left-[-40px] w-36 h-36 bg-purple-500 text-white flex items-center justify-center rounded-full transform -translate-x-4 translate-y-4">
               <p className="text-center text-sm">
