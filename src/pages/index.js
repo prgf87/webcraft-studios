@@ -5,6 +5,7 @@ import Hero from '@/components/hero';
 import Services from '@/components/services';
 import Portfolio from '@/components/portfolio';
 import About from '@/components/about';
+import FAQ from '@/components/faq';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Portfolio />
       <About />
       <Banner />
+      <FAQ />
       <Contact />
     </Layout>
   );

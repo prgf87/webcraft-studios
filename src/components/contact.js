@@ -12,14 +12,13 @@ async function sendEmailViaApi(name, email, subject, message) {
         'Content-Type': 'application/json',
       },
     });
-    console.log(response);
     if (response.ok) {
       return true;
     } else {
       return false;
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
     return false;
   }
 }
@@ -32,8 +31,8 @@ export default function Contact() {
   const [status, setStatus] = useState('idle');
   const [toastMessage, setToastMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
+  const [captcha, setCaptcha] = useState(false);
   const [sentEmail, setSentEmail] = useState(false);
-
   const [errors, setErrors] = useState({
     name: '',
     subject: '',
@@ -41,9 +40,8 @@ export default function Contact() {
     message: '',
   });
 
-  useEffect(() => {}, []);
-
   const onReCaptcha = (value) => {
+
     setStatus('submitting');
     try {
       fetch('/api/recaptcha', {
@@ -70,6 +68,7 @@ export default function Contact() {
       showToastMessage('Failed to submit the form.');
       setStatus('idle');
     }
+
   };
 
   const validateForm = () => {
@@ -151,18 +150,14 @@ export default function Contact() {
     if (validateForm()) {
       console.log('here');
       setStatus('submitting');
+
       const success = await sendEmailViaApi(name, email, subject, message);
       if (success) {
         setName('');
         setEmail('');
         setSubject('');
         setMessage('');
-        setErrors({
-          name: '',
-          subject: '',
-          email: '',
-          message: '',
-        });
+        setErrors({ name: '', subject: '', email: '', message: '' });
         showToastMessage('Message sent successfully!');
         setStatus('sent');
         setSentEmail(true);
@@ -170,6 +165,8 @@ export default function Contact() {
         showToastMessage('Failed to submit the form.');
         setStatus('idle');
       }
+    } else {
+      showToastMessage('Please complete the reCAPTCHA.');
     }
   };
 
@@ -267,7 +264,6 @@ export default function Contact() {
             <p className="text-red-500 text-sm">{errors.message}</p>
           )}
         </div>
-
         {showToast ? (
           <div
             className={`relative w-full bg-green-700 text-white p-3 rounded-md shadow-lg z-50 transition-opacity text-center mt-4 duration-500 ease-in-out ${
