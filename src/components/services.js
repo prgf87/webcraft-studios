@@ -14,7 +14,7 @@ export default function Services() {
   return (
     <div className="max-w-screen mx-auto p-8 sm:text-center shadow-lg">
       <div id="services" className="relative top-[-100px]" />
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto text-center sm:text-left">
         <h2 className="pb-4 text-base">Our Services</h2>
         <div>
           <h2 className="text-4xl font-bold pb-2">
