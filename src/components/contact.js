@@ -41,7 +41,6 @@ export default function Contact() {
   });
 
   const onReCaptcha = (value) => {
-
     setStatus('submitting');
     try {
       fetch('/api/recaptcha', {
@@ -68,7 +67,6 @@ export default function Contact() {
       showToastMessage('Failed to submit the form.');
       setStatus('idle');
     }
-
   };
 
   const validateForm = () => {
