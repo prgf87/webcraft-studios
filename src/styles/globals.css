@@ -41,6 +41,10 @@ h6 {
   @apply border border-[#7D1CBF] rounded-xl px-3 py-1 my-4 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF] shadow-md hover:bg-[#7D1CBF]/90 hover:text-white transition-colors duration-300 ease-out;
 }
 
+.btn-5 {
+  @apply border border-[#7D1CBF] rounded-3xl py-1 px-2.5 font-bold uppercase text-sm bg-[#7D1CBF]/90 text-white shadow-md hover:bg-white hover:text-[#7D1CBF] transition-colors duration-300 ease-out;
+}
+
 input,
 textarea {
   min-width: 300px;
