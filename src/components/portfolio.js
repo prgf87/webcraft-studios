@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import project1 from '../../public/images/projects/1.jpg';
-import project2 from '../../public/images/projects/3.png';
 import project3 from '../../public/images/projects/2.jpg';
 import project4 from '../../public/images/projects/4.jpg';
 import project5 from '../../public/images/projects/5.jpg';
@@ -64,6 +63,7 @@ export default function Portfolio() {
             our clients elevate their online presence.
           </p>
         </div>
+
         <div className="relative">
           <button
             onClick={prevSlide}
