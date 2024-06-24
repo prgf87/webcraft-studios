@@ -39,7 +39,7 @@ export default function About() {
               alt="Profile Picture"
               className="rounded-full object-cover w-48 h-48 md:w-64 md:h-64"
             />
-            <div className="absolute bottom-5 right-5 w-32 h-32 bg-purple-500 text-white flex items-center justify-center rounded-full transform translate-x-4 translate-y-4">
+            <div className="absolute -bottom-5 sm:bottom-5 -right-10 sm:-right-5 w-32 h-32 bg-purple-500 text-white flex items-center justify-center rounded-full transform translate-x-4 translate-y-4">
               <p className="text-center text-sm">
                 “I hope to add value to your website.”
               </p>
@@ -73,7 +73,7 @@ export default function About() {
           </p>
         </div>
         <div className="md:w-1/2 flex items-center justify-center relative mt-8 md:mt-0">
-          <div className="relative ">
+          <div className="relative -left-5">
             <Image
               src={profilePicJosh}
               alt="Profile Picture"
