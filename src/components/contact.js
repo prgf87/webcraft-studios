@@ -175,24 +175,24 @@ export default function Contact() {
 
   return (
     <div>
-      <form className="max-w-md mx-auto py-8 mb-5 z-0" onSubmit={handleSubmit}>
-        <div id="contact" className="relative top-[-100px]" />
-        <div className=" flex flex-col mb-4 gap-2 justify-center items-center">
-          <div className="text-sm p-1 rounded-lg">
-            <h2 className="pt-4 text-base">Get in Touch</h2>
-          </div>
-          <h1 className="tracking-tighter text-3xl">
-            Let&apos;s Discuss Your{' '}
-            <span className="text-[#7D1CBF]">Project</span>
-          </h1>
-          <p className="text-lg tracking-tighter text-center">
-            Fill out the form below and one of our experts will be in touch to
-            discuss your web design and development needs.
-          </p>
+      <div id="contact" className="relative top-[-100px]" />
+      <div className=" flex flex-col mb-4 gap-y-2 justify-center items-center px-16">
+        <div className="text-sm p-1 rounded-lg">
+          <h2 className="pt-4 text-base">Get in Touch</h2>
         </div>
+        <h1 className="tracking-tighter text-3xl">
+          Let&apos;s Discuss Your{' '}
+          <span className="text-[#7D1CBF]">Project</span>
+        </h1>
+        <p className="text-lg tracking-tighter text-center">
+          Fill out the form below and one of our experts will be in touch to
+          discuss your web design and development needs.
+        </p>
+      </div>
+      <form className="max-w-xs mx-auto py-8 mb-5 z-0" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="name" className="block mb-1 text-sm">
-            Name
+            Name*
           </label>
           <input
             type="text"
@@ -200,7 +200,7 @@ export default function Contact() {
             name="name"
             value={name}
             onChange={(e) => handleInputChange('name', e.target.value)}
-            className={`w-full border ${
+            className={`border ${
               errors.name ? 'border-red-500' : 'border-gray-300'
             } rounded-md p-2`}
           />
@@ -209,7 +209,7 @@ export default function Contact() {
 
         <div className="mb-4">
           <label htmlFor="email" className="block mb-1 text-sm">
-            Email
+            Email*
           </label>
           <input
             type="email"
@@ -217,7 +217,7 @@ export default function Contact() {
             name="email"
             value={email}
             onChange={(e) => handleInputChange('email', e.target.value)}
-            className={`w-full border ${
+            className={`border ${
               errors.email ? 'border-red-500' : 'border-gray-300'
             } rounded-md p-2`}
           />
@@ -228,7 +228,7 @@ export default function Contact() {
 
         <div className="mb-4">
           <label htmlFor="subject" className="block mb-1 text-sm">
-            Subject
+            Subject*
           </label>
           <input
             type="text"
@@ -236,7 +236,7 @@ export default function Contact() {
             name="subject"
             value={subject}
             onChange={(e) => handleInputChange('subject', e.target.value)}
-            className={`w-full border ${
+            className={`border ${
               errors.subject ? 'border-red-500' : 'border-gray-300'
             } rounded-md p-2`}
           />
@@ -247,14 +247,14 @@ export default function Contact() {
 
         <div className="">
           <label htmlFor="message" className="block mb-1 text-sm">
-            Message
+            Message*
           </label>
           <textarea
             id="message"
             name="message"
             value={message}
             onChange={(e) => handleInputChange('message', e.target.value)}
-            className={`w-full border ${
+            className={`border ${
               errors.message ? 'border-red-500' : 'border-gray-300'
             } rounded-md p-2`}
           ></textarea>
@@ -264,7 +264,7 @@ export default function Contact() {
         </div>
         {showToast ? (
           <div
-            className={`relative w-full bg-green-700 text-white p-3 rounded-md shadow-lg z-50 transition-opacity text-center mt-4 duration-500 ease-in-out ${
+            className={`relative bg-green-700 text-white p-3 rounded-md shadow-lg z-50 transition-opacity text-center mt-4 duration-500 ease-in-out ${
               showToast ? 'opacity-100' : 'opacity-0'
             }`}
           >
@@ -275,10 +275,9 @@ export default function Contact() {
             <ReCAPTCHA
               sitekey={siteKey}
               onChange={onReCaptcha}
-              className="flex justify-stretch items-center sm:mt-0"
-              badge="inline"
-              size="normal"
-              style={{ width: '600px' }}
+              className="flex justify-center items-center sm:mt-0"
+              size="compact"
+              allowfullscreen
             />
             <button
               type="submit"

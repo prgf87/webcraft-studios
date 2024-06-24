@@ -129,7 +129,7 @@ export default function Portfolio() {
         </div>
         <div className="flex justify-center items-center mx-auto">
           <Link href={'/#about'}>
-            <button className="btn-3">Learn More</button>
+            <button className="btn-1">Learn More</button>
           </Link>
         </div>
       </div>
