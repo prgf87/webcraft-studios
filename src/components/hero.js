@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <div className="max-w-xl sm:max-w-5xl mx-auto py-16">
+    <div className="max-w-xl sm:max-w-5xl mx-auto py-4 sm:py-16">
       <div className="grid lg:grid-cols-2 mx-auto ">
         <div className="flex justify-start items-center p-4">
           <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-x-8">

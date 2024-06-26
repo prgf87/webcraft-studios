@@ -41,7 +41,7 @@ export default function FAQ() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 mt-5 mb-10">
+    <div className="max-w-2xl mx-auto mt-5 mb-10">
       <div className="text-center">
         <h2 className="pt-4 mb-3 text-base">FAQ</h2>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8">
@@ -52,22 +52,23 @@ export default function FAQ() {
       {faqs.map((faq, index) => {
         const isOpen = openIndex === index;
         return (
-          <div key={index} className="border-b border-gray-200">
+          <div key={index} className="max-w-2xl">
             <button
-              className="flex justify-between items-center w-full py-4 px-4 focus:outline-none"
+              className="w-3/4 mx-auto py-4 px-4 flex justify-between items-center focus:outline-none border-b border-gray-200"
               onClick={() => toggleFAQ(index)}
             >
-              <span className="text-base sm:text-lg font-medium">
+              <span className="text-base sm:text-lg font-medium text-left">
                 {faq.title}
               </span>
               <svg
-                className={`w-8 h-8 sm:w-6 sm:h-6 transition-transform duration-300 ${
+                className={`w-6 h-6 sm:w-8 sm:h-8 transition-transform duration-300 ${
                   isOpen ? 'transform rotate-180' : ''
                 }`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
               >
                 <path
                   strokeLinecap="round"

@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <nav className="sticky top-0 w-full h-20 shadow-lg bg-white z-10">
       <div className="max-w-[1600px] mx-auto h-full px-8">
-        <div className="flex justify-between items-center h-full w-full ">
+        <div className="flex justify-between items-center h-full w-full">
           <Link className="flex items-center ml-4" href="/#home">
             <Image
               src={logo}
@@ -23,7 +23,9 @@ export default function Header() {
               className="cursor-pointer rounded-sm mr-3"
               priority
             />
-            <h1 className="font-bold">Webcraft Studios</h1>
+            <h1 className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl whitespace-nowrap">
+              Webcraft Studios
+            </h1>
           </Link>
 
           <div className="hidden text-sm sm:flex mr-5">

@@ -56,39 +56,6 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        {/* Section: Resources */}
-        <div className="p-5">
-          <ul>
-            <h2 className="font-bold text-xl pb-4">Resources</h2>
-            <li className="font-semibold text-gray-700 pb-2 hover:hover:text-[#7D1CBF] cursor-pointer">
-              Blog
-            </li>
-            <li className="font-semibold text-gray-700 pb-2 hover:hover:text-[#7D1CBF] cursor-pointer">
-              FAQ
-            </li>
-            <li className="font-semibold text-gray-700 pb-2 hover:hover:text-[#7D1CBF] cursor-pointer">
-              Guides
-            </li>
-          </ul>
-        </div>
-        {/* Section: Contact */}
-        <div className="p-5">
-          <ul>
-            <h2 className="font-bold text-xl pb-4">Contact</h2>
-            <li className="font-semibold text-gray-700 pb-2 hover:hover:text-[#7D1CBF] cursor-pointer">
-              Email
-            </li>
-            <li className="font-semibold text-gray-700 pb-2 hover:hover:text-[#7D1CBF] cursor-pointer">
-              Phone
-            </li>
-            <li className="font-semibold text-gray-700 pb-2 hover:hover:text-[#7D1CBF] cursor-pointer">
-              Address
-            </li>
-            <li className="font-semibold text-gray-700 pb-2 hover:hover:text-[#7D1CBF] cursor-pointer">
-              Schedule a Call
-            </li>
-          </ul>
-        </div>
       </div>
       {/* Bottom section */}
       <div className="flex flex-col justify-center items-center text-center p-5 bg-gray-50 text-sm">
