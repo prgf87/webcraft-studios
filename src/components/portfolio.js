@@ -56,7 +56,7 @@ export default function Portfolio() {
     <div className="max-w-5xl mx-auto pt-10">
       <div id="portfolio" className="relative top-[-100px]" />
       <div className="max-w-5xl mx-auto p-8">
-        <h3 className="pb-4 text-4xl font-bold text-center">Our Portfolio</h3>
+        <h3 className="pb-4 font-bold text-center">Our Portfolio</h3>
         <div>
           <p className="text-base pb-8 text-center">
             Check out some of our recent projects and see how we&apos;ve helped
@@ -69,7 +69,7 @@ export default function Portfolio() {
             onClick={prevSlide}
             className="btn-5 absolute left-0 sm:left-12 lg:left-10 top-1/2 transform -translate-y-1/2 z-10"
           >
-            &#10094;
+            &nbsp;&#10094;&nbsp;
           </button>
           <div className="flex items-center justify-center overflow-hidden relative z-0">
             <div className="max-w-5xl flex justify-center items-center -space-x-64 md:-space-x-[550px] lg:-space-x-[800px]">
@@ -98,13 +98,13 @@ export default function Portfolio() {
                     key={index}
                     className={`w-64 md:w-[550px] lg:w-[800px] min-h-80 pb-4 ${positionClasses}`}
                   >
-                    <div className="flex flex-col flex-1 border rounded overflow-hidden shadow-md bg-white">
+                    <div className="flex flex-col flex-1 border rounded overflow-hidden shadow-md bg-white dark:bg-[#030329]">
                       <Image
                         src={project.image}
                         alt={`pic${index + 1}`}
                         className="min-h-80 w-64 md:w-[550px] lg:w-[800px] object-cover"
                       />
-                      <div className="p-4">
+                      <div className="p-4 border-t">
                         <h3 className="text-base sm:text-lg font-bold">
                           <span className="portfolio-link">
                             {project.title}
@@ -122,9 +122,9 @@ export default function Portfolio() {
           </div>
           <button
             onClick={nextSlide}
-            className="btn-5 absolute right-0 sm:right-12 lg:right-10 top-1/2 transform -translate-y-1/2 z-10"
+            className="btn-5 absolute right-0 sm:right-12 lg:right-10 top-1/2 transform -translate-y-1/2 z-10 drop-shadow-md"
           >
-            &#10095;
+            &nbsp;&#10095;&nbsp;
           </button>
         </div>
         <div className="flex justify-center items-center mx-auto">

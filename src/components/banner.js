@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Banner() {
   return (
-    <div className="max-w-screen mx-auto py-4 bg-gray-100">
+    <div className="max-w-screen mx-auto py-4">
       <div id="banner" className="relative top-[-100px]" />
       <div className="max-w-5xl mx-auto p-4">
         <div className="grid md:grid-cols-2 mx-auto gap-x-8">
@@ -38,11 +38,6 @@ export default function Banner() {
                 crucial a strong online presence is in the cutthroat market of
                 today.
               </p>
-              <div className="pt-2">
-                <Link href={'/#contact'}>
-                  <button className="btn-1">Schedule a Call</button>
-                </Link>
-              </div>
             </div>
           </div>
         </div>

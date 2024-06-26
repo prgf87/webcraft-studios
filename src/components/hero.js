@@ -22,7 +22,7 @@ export default function Hero() {
               </p>
               <div className="pt-3 flex justify-center sm:justify-start items-center">
                 <Link href={'/#services'}>
-                  <button className="btn-1">Find Out More</button>
+                  <button className="btn-1 my-4 sm:mt-0">Find Out More</button>
                 </Link>
               </div>
             </div>

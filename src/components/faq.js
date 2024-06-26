@@ -41,9 +41,9 @@ export default function FAQ() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-5 mb-10">
+    <div className="max-w-2xl mx-auto mt-5 mb-10 px-4 sm:px-8 md:px-16 lg:px-20">
       <div className="text-center">
-        <h2 className="pt-4 mb-3 text-base">FAQ</h2>
+        <h2 className="pt-4 mb-3">FAQ</h2>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8">
           Frequently Asked Questions
         </h1>
@@ -52,9 +52,9 @@ export default function FAQ() {
       {faqs.map((faq, index) => {
         const isOpen = openIndex === index;
         return (
-          <div key={index} className="max-w-2xl">
+          <div key={index} className="max-w-2xl px-4 sm:px-8 md:px-16 lg:px-20">
             <button
-              className="w-3/4 mx-auto py-4 px-4 flex justify-between items-center focus:outline-none border-b border-gray-200"
+              className="w-full mx-auto py-4 flex justify-between items-center focus:outline-none border-b border-gray-200"
               onClick={() => toggleFAQ(index)}
             >
               <span className="text-base sm:text-lg font-medium text-left">
@@ -83,9 +83,7 @@ export default function FAQ() {
                 isOpen ? 'max-h-screen' : 'max-h-0'
               }`}
             >
-              <div className="px-4 py-2 text-sm sm:text-base leading-relaxed">
-                {faq.content}
-              </div>
+              <div className="py-2 text-lg leading-relaxed">{faq.content}</div>
             </div>
           </div>
         );

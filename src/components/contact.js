@@ -1,3 +1,6 @@
+'use client';
+
+import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
@@ -39,6 +42,8 @@ export default function Contact() {
     email: '',
     message: '',
   });
+
+  const { resolvedTheme } = useTheme();
 
   const onReCaptcha = (value) => {
     setStatus('submitting');
@@ -174,22 +179,22 @@ export default function Contact() {
   };
 
   return (
-    <div>
+    <div className="pb-20 max-w-xs md:max-w-2xl mx-auto px-4 sm:px-8 md:px-16 lg:px-20">
       <div id="contact" className="relative top-[-100px]" />
-      <div className=" flex flex-col mb-4 gap-y-2 justify-center items-center px-16">
-        <div className="text-sm p-1 rounded-lg">
-          <h2 className="pt-4 text-base">Get in Touch</h2>
+      <div className="flex flex-col mb-4 gap-y-2 justify-center items-center text-center">
+        <div className="text-sm py-1 rounded-lg">
+          <h2 className="pt-4">Get in Touch</h2>
         </div>
         <h1 className="tracking-tighter text-3xl">
           Let&apos;s Discuss Your{' '}
           <span className="text-[#7D1CBF]">Project</span>
         </h1>
-        <p className="text-lg tracking-tighter text-center">
+        <p className="text-lg tracking-tighter">
           Fill out the form below and one of our experts will be in touch to
           discuss your web design and development needs.
         </p>
       </div>
-      <form className="max-w-xs mx-auto py-8 mb-5 z-0" onSubmit={handleSubmit}>
+      <form className="pt-8 mb-5 z-0" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="name" className="block mb-1 text-sm">
             Name*
@@ -272,13 +277,6 @@ export default function Contact() {
           </div>
         ) : (
           <>
-            <ReCAPTCHA
-              sitekey={siteKey}
-              onChange={onReCaptcha}
-              className="flex justify-center items-center sm:mt-0"
-              size="compact"
-              allowfullscreen
-            />
             <button
               type="submit"
               className={`${
@@ -299,6 +297,26 @@ export default function Contact() {
           </>
         )}
       </form>
+      <div className="flex justify-center items-center">
+        {resolvedTheme === 'light' && (
+          <ReCAPTCHA
+            sitekey={siteKey}
+            onChange={onReCaptcha}
+            badge="inline"
+            size="normal"
+            theme="light"
+          />
+        )}
+        {resolvedTheme === 'dark' && (
+          <ReCAPTCHA
+            sitekey={siteKey}
+            onChange={onReCaptcha}
+            badge="inline"
+            size="normal"
+            theme="dark"
+          />
+        )}
+      </div>
     </div>
   );
 }
