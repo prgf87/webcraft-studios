@@ -8,7 +8,7 @@ export default function About() {
       <h2 className="text-center mb-3">The Team</h2>
       <div id="about" className="relative top-[-100px]" />
       {/* First Section */}
-      <div className="flex flex-col md:flex-row items-center justify-between bg-white mb-8">
+      <div className="flex flex-col md:flex-row items-center justify-between  mb-8">
         <div className="text-sm mx-auto">
           <div className="border-l-4 border-purple-500 pl-4 mb-4">
             <h2 className="text-2xl font-bold">

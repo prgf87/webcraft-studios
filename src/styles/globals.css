@@ -11,7 +11,9 @@
 
 body {
   font-size: 1.2rem;
+  @apply bg-white dark:bg-[#030329];
 }
+
 h1,
 h2,
 h3,
@@ -42,18 +44,14 @@ h6 {
 }
 
 .btn-5 {
-  @apply border border-[#7D1CBF] rounded-3xl py-1 px-2.5 font-bold uppercase text-sm bg-[#7D1CBF]/90 text-white shadow-md hover:bg-white hover:text-[#7D1CBF] transition-colors duration-300 ease-out;
+  @apply border border-[#7D1CBF] rounded-full py-2 px-3 font-bold uppercase text-2xl bg-[#7D1CBF]/90 text-white shadow-md hover:bg-white hover:text-[#7D1CBF] transition-colors duration-300 ease-out;
 }
 
 input,
 textarea {
   min-width: 300px;
   border: 1px solid black;
-  @apply shadow-md;
-}
-
-.rc-anchor {
-  width: 5px;
+  @apply shadow-md dark:bg-[#171775];
 }
 
 /*
@@ -83,18 +81,3 @@ secondary: #3B627D
 thirdary: #5597C3
 quartery: #B7C9D8
 */
-
-/* .portfolio-carousel {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-.portfolio-carousel-item {
-  min-width: 100%;
-}
-.portfolio-carousel button {
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-} */

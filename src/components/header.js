@@ -1,22 +1,28 @@
 import Image from 'next/image';
 import logo from '../../public/images/logo/logo.png';
+import logowhite from '../../public/images/logo/logo-white.png';
 import Link from 'next/link';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
+import ThemeToggle from './theme';
+import { useTheme } from 'next-themes';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { resolvedTheme } = useTheme();
+
   const handleHeader = () => {
     setMenuOpen(!menuOpen);
   };
 
   return (
-    <nav className="sticky top-0 w-full h-20 shadow-lg bg-white z-10">
+    <nav className="sticky top-0 w-full h-20 shadow-md bg-white dark:bg-[#101b46] z-20 shadow-gray-200 dark:shadow-[#c56fff]">
       <div className="max-w-[1600px] mx-auto h-full px-8">
         <div className="flex justify-between items-center h-full w-full ">
           <Link className="flex items-center ml-4" href="/#home">
             <Image
-              src={logo}
+              src={resolvedTheme === 'light' ? logo : logowhite}
               alt="logo"
               width={20}
               height={20}
@@ -28,18 +34,21 @@ export default function Header() {
 
           <div className="hidden text-sm sm:flex mr-5">
             <ul className="hidden sm:flex space-x-10">
-              <Link href="/#services">
-                <li>Services</li>
-              </Link>
-              <Link href="/#portfolio">
-                <li>Portfolio</li>
-              </Link>
-              <Link href="/#about">
-                <li>About</li>
-              </Link>
-              <Link href="/#contact">
-                <li>Contact</li>
-              </Link>
+              <li>
+                <Link href="/#services">Services</Link>
+              </li>
+              <li>
+                <Link href="/#portfolio">Portfolio</Link>
+              </li>
+              <li>
+                <Link href="/#about">About</Link>
+              </li>
+              <li>
+                <Link href="/#contact">Contact</Link>
+              </li>
+              <li className="pt-1">
+                <ThemeToggle />
+              </li>
             </ul>
           </div>
           <div

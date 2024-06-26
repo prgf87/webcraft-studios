@@ -69,7 +69,7 @@ export default function Portfolio() {
             onClick={prevSlide}
             className="btn-5 absolute left-0 sm:left-12 lg:left-10 top-1/2 transform -translate-y-1/2 z-10"
           >
-            &#10094;
+            &nbsp;&#10094;&nbsp;
           </button>
           <div className="flex items-center justify-center overflow-hidden relative z-0">
             <div className="max-w-5xl flex justify-center items-center -space-x-64 md:-space-x-[550px] lg:-space-x-[800px]">
@@ -122,9 +122,9 @@ export default function Portfolio() {
           </div>
           <button
             onClick={nextSlide}
-            className="btn-5 absolute right-0 sm:right-12 lg:right-10 top-1/2 transform -translate-y-1/2 z-10"
+            className="btn-5 absolute right-0 sm:right-12 lg:right-10 top-1/2 transform -translate-y-1/2 z-10 drop-shadow-md"
           >
-            &#10095;
+            &nbsp;&#10095;&nbsp;
           </button>
         </div>
         <div className="flex justify-center items-center mx-auto">

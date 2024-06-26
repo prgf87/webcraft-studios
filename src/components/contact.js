@@ -1,3 +1,6 @@
+'use client';
+
+import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
@@ -40,8 +43,9 @@ export default function Contact() {
     message: '',
   });
 
-  const onReCaptcha = (value) => {
+  const { resolvedTheme } = useTheme();
 
+  const onReCaptcha = (value) => {
     setStatus('submitting');
     try {
       fetch('/api/recaptcha', {
@@ -68,7 +72,6 @@ export default function Contact() {
       showToastMessage('Failed to submit the form.');
       setStatus('idle');
     }
-
   };
 
   const validateForm = () => {
@@ -177,7 +180,10 @@ export default function Contact() {
 
   return (
     <div>
-      <form className="max-w-md mx-auto py-8 mb-5 z-0" onSubmit={handleSubmit}>
+      <form
+        className="max-w-md mx-auto px-4 sm:px-0 py-8 mb-5 z-0"
+        onSubmit={handleSubmit}
+      >
         <div id="contact" className="relative top-[-100px]" />
         <div className=" flex flex-col mb-4 gap-2 justify-center items-center">
           <div className="text-sm p-1 rounded-lg">
@@ -274,14 +280,6 @@ export default function Contact() {
           </div>
         ) : (
           <>
-            <ReCAPTCHA
-              sitekey={siteKey}
-              onChange={onReCaptcha}
-              className="flex justify-stretch items-center sm:mt-0"
-              badge="inline"
-              size="normal"
-              style={{ width: '600px' }}
-            />
             <button
               type="submit"
               className={`${
@@ -300,6 +298,26 @@ export default function Contact() {
               Submit
             </button>
           </>
+        )}
+        {resolvedTheme === 'light' && (
+          <ReCAPTCHA
+            sitekey={siteKey}
+            onChange={onReCaptcha}
+            className="flex justify-center items-center mt-4"
+            badge="inline"
+            size="normal"
+            theme="light"
+          />
+        )}
+        {resolvedTheme === 'dark' && (
+          <ReCAPTCHA
+            sitekey={siteKey}
+            onChange={onReCaptcha}
+            className="flex justify-center items-center mt-4"
+            badge="inline"
+            size="normal"
+            theme="dark"
+          />
         )}
       </form>
     </div>

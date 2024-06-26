@@ -7,7 +7,7 @@ import { FaLinkedin } from 'react-icons/fa';
 export default function Footer() {
   return (
     <>
-      <div className="bg-gray-50 max-w-screen flex md:flex-row flex-col justify-evenly items-start p-2">
+      <div className="bg-white dark:bg-black dark:bg-black max-w-screen flex md:flex-row flex-col justify-evenly items-start p-2">
         {/* Company name with social media icons */}
         <div className="p-5">
           <ul>
@@ -91,7 +91,7 @@ export default function Footer() {
         </div>
       </div>
       {/* Bottom section */}
-      <div className="flex flex-col justify-center items-center text-center p-5 bg-gray-50 text-sm">
+      <div className="flex flex-col justify-center items-center text-center p-5 bg-white dark:bg-black text-sm">
         <a href={'/#home'}>
           © 2024 All rights reserved | Built by Webcraft Studios
         </a>
