@@ -38,11 +38,6 @@ export default function Banner() {
                 crucial a strong online presence is in the cutthroat market of
                 today.
               </p>
-              <div className="pt-2">
-                <Link href={'/#contact'}>
-                  <button className="btn-1">Schedule a Call</button>
-                </Link>
-              </div>
             </div>
           </div>
         </div>

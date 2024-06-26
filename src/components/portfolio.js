@@ -56,7 +56,7 @@ export default function Portfolio() {
     <div className="max-w-5xl mx-auto pt-10">
       <div id="portfolio" className="relative top-[-100px]" />
       <div className="max-w-5xl mx-auto p-8">
-        <h3 className="pb-4 text-4xl font-bold text-center">Our Portfolio</h3>
+        <h3 className="pb-4 font-bold text-center">Our Portfolio</h3>
         <div>
           <p className="text-base pb-8 text-center">
             Check out some of our recent projects and see how we&apos;ve helped
@@ -98,13 +98,13 @@ export default function Portfolio() {
                     key={index}
                     className={`w-64 md:w-[550px] lg:w-[800px] min-h-80 pb-4 ${positionClasses}`}
                   >
-                    <div className="flex flex-col flex-1 border rounded overflow-hidden shadow-md bg-white">
+                    <div className="flex flex-col flex-1 border rounded overflow-hidden shadow-md bg-white dark:bg-[#030329]">
                       <Image
                         src={project.image}
                         alt={`pic${index + 1}`}
                         className="min-h-80 w-64 md:w-[550px] lg:w-[800px] object-cover"
                       />
-                      <div className="p-4">
+                      <div className="p-4 border-t">
                         <h3 className="text-base sm:text-lg font-bold">
                           <span className="portfolio-link">
                             {project.title}
@@ -129,7 +129,7 @@ export default function Portfolio() {
         </div>
         <div className="flex justify-center items-center mx-auto">
           <Link href={'/#about'}>
-            <button className="btn-3">Learn More</button>
+            <button className="btn-1">Learn More</button>
           </Link>
         </div>
       </div>

@@ -12,10 +12,11 @@ import { MdSupportAgent } from 'react-icons/md';
 
 export default function Services() {
   return (
-    <div className="max-w-screen mx-auto p-8 sm:text-center shadow-lg">
+    <div className="max-w-screen mx-auto p-8 shadow-lg">
       <div id="services" className="relative top-[-100px]" />
-      <div className="max-w-5xl mx-auto">
-        <h2 className="pb-4 text-base">Our Services</h2>
+
+      <div className="max-w-5xl mx-auto text-center">
+        <h2 className="pb-4">Our Services</h2>
         <div>
           <h2 className="text-4xl font-bold pb-2">
             Taking the Hassle out of the Process

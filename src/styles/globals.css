@@ -28,15 +28,15 @@ h6 {
 }
 
 .btn-2 {
-  @apply border border-[#7D1CBF] w-full rounded-xl px-2 py-6 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF] shadow-md hover:bg-[#7D1CBF] hover:text-white transition-colors duration-300 ease-out;
+  @apply border border-[#7D1CBF] rounded-xl w-full py-3 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF] shadow-md hover:bg-[#7D1CBF] hover:text-white transition-colors duration-300 ease-out dark:border-white dark:text-white;
 }
 
 .btn-2-disabled {
-  @apply border border-[#7D1CBF]/30 w-full rounded-xl px-2 py-6 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF]/30 shadow-md cursor-not-allowed;
+  @apply border border-[#7D1CBF]/30 w-full rounded-xl py-3 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF]/30 shadow-md cursor-not-allowed dark:border-gray-400 dark:text-gray-400;
 }
 
 .btn-3 {
-  @apply border border-[#7D1CBF] rounded-xl px-8 py-4 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF] shadow-md hover:bg-[#7D1CBF] hover:text-white transition-colors duration-300 ease-out;
+  @apply border border-[#7D1CBF] rounded-3xl px-8 py-3 font-bold uppercase text-sm bg-[#7D1CBF]/0 text-[#7D1CBF] shadow-md hover:bg-[#7D1CBF] hover:text-white transition-colors duration-300 ease-out dark:border-white dark:text-white;
 }
 
 .btn-4 {
@@ -51,7 +51,7 @@ input,
 textarea {
   min-width: 300px;
   border: 1px solid black;
-  @apply shadow-md dark:bg-[#171775];
+  @apply shadow-md dark:bg-white dark:text-black;
 }
 
 /*
