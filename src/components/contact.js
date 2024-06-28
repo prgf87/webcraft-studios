@@ -297,25 +297,14 @@ export default function Contact() {
           </>
         )}
       </form>
+
       <div className="flex justify-center items-center">
-        {resolvedTheme === 'light' && (
-          <ReCAPTCHA
-            sitekey={siteKey}
-            onChange={onReCaptcha}
-            badge="inline"
-            size="normal"
-            theme="light"
-          />
-        )}
-        {resolvedTheme === 'dark' && (
-          <ReCAPTCHA
-            sitekey={siteKey}
-            onChange={onReCaptcha}
-            badge="inline"
-            size="normal"
-            theme="dark"
-          />
-        )}
+        <ReCAPTCHA
+          sitekey={siteKey}
+          onChange={onReCaptcha}
+          size="normal"
+          theme="light"
+        />
       </div>
     </div>
   );
