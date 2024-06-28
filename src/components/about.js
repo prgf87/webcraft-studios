@@ -88,11 +88,11 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="pt-16">
-          <Link href={'/#contact'}>
-            <button className="btn-1">Schedule a Call</button>
-          </Link>
-        </div>
+      </div>
+      <div className="pt-16 flex justify-center">
+        <Link href={'/#contact'}>
+          <button className="btn-1">Schedule a Call</button>
+        </Link>
       </div>
     </div>
   );

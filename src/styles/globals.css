@@ -51,7 +51,7 @@ input,
 textarea {
   min-width: 300px;
   border: 1px solid black;
-  @apply shadow-md dark:bg-white dark:text-black;
+  @apply sm:w-full shadow-md dark:bg-white dark:text-black;
 }
 
 /*

@@ -205,7 +205,7 @@ export default function Contact() {
             name="name"
             value={name}
             onChange={(e) => handleInputChange('name', e.target.value)}
-            className={`border ${
+            className={`input-box border ${
               errors.name ? 'border-red-500' : 'border-gray-300'
             } rounded-md p-2`}
           />
@@ -222,7 +222,7 @@ export default function Contact() {
             name="email"
             value={email}
             onChange={(e) => handleInputChange('email', e.target.value)}
-            className={`border ${
+            className={`input-box border ${
               errors.email ? 'border-red-500' : 'border-gray-300'
             } rounded-md p-2`}
           />
@@ -241,7 +241,7 @@ export default function Contact() {
             name="subject"
             value={subject}
             onChange={(e) => handleInputChange('subject', e.target.value)}
-            className={`border ${
+            className={`input-box border ${
               errors.subject ? 'border-red-500' : 'border-gray-300'
             } rounded-md p-2`}
           />
@@ -259,7 +259,7 @@ export default function Contact() {
             name="message"
             value={message}
             onChange={(e) => handleInputChange('message', e.target.value)}
-            className={`border ${
+            className={`input-box border ${
               errors.message ? 'border-red-500' : 'border-gray-300'
             } rounded-md p-2`}
           ></textarea>
