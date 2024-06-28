@@ -195,7 +195,7 @@ export default function Contact() {
         </p>
       </div>
       <form className="pt-8 mb-5 z-0" onSubmit={handleSubmit}>
-        <div className="mb-4">
+        <div className="mb-4 grid w-full">
           <label htmlFor="name" className="block mb-1 text-sm">
             Name*
           </label>
@@ -212,7 +212,7 @@ export default function Contact() {
           {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 grid w-full">
           <label htmlFor="email" className="block mb-1 text-sm">
             Email*
           </label>
@@ -231,7 +231,7 @@ export default function Contact() {
           )}
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 grid w-full">
           <label htmlFor="subject" className="block mb-1 text-sm">
             Subject*
           </label>
@@ -250,7 +250,7 @@ export default function Contact() {
           )}
         </div>
 
-        <div className="">
+        <div className="mb-4 grid w-full">
           <label htmlFor="message" className="block mb-1 text-sm">
             Message*
           </label>
