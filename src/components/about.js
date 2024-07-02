@@ -9,7 +9,6 @@ export default function About() {
       <h2 className="text-center mb-8">The Team</h2>
       <div id="about" className="relative top-[-100px]" />
       {/* First Section */}
-
       <div className="flex flex-col md:flex-row items-center justify-between mb-8">
         <div className="text-sm mx-auto px-4 sm:px-8 md:px-16 lg:px-20">
           <div className="border-l-4 border-purple-500 pl-4 mb-4">
@@ -41,8 +40,8 @@ export default function About() {
               alt="Profile Picture"
               className="rounded-full object-cover w-48 h-48 md:w-64 md:h-64"
             />
-            <div className="absolute -bottom-5 sm:bottom-5 -right-10 sm:-right-5 w-32 h-32 bg-purple-500 text-white flex items-center justify-center rounded-full transform translate-x-4 translate-y-4">
-              <p className="text-center text-sm">
+            <div className="absolute sm:bottom-0 -right-10 sm:-right-5 w-[100px] h-[100px] bg-purple-500 text-white flex items-center justify-center rounded-full transform translate-x-4 translate-y-4">
+              <p className="text-center text-xs">
                 “I hope to add value to your website.”
               </p>
             </div>
